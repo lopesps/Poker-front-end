@@ -1,0 +1,29 @@
+Deck
+ deckDefault OK
+
+ flop Card[] OK
+ turn Card OK
+ river Card OK
+ burnedCards Cards[] OK
+
+ players Player[] OK
+
+
+ burnsCards() OK
+ flop() OK
+ turn() OK
+ river() OK
+ 
+ getTableCard()[flop,turn,river]
+
+player
+ hand Card[]
+ id hash
+ name string
+ cash float
+ getHand()
+ 
+card
+ key int
+ nype string
+ name string
