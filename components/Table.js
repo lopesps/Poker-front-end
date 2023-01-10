@@ -1,4 +1,5 @@
 import Card from "./Card.js";
+import Combinations from "./Combinations.js";
 import Player from "./Player.js";
 
 class Table {
@@ -8,6 +9,7 @@ class Table {
     this.burnedCards = [];
     this.hands = [];
     this.flop = [];
+    this.currentFlop = new Combinations(this.flop);
     this.turn;
     this.river;
     this.cardNypes = ["Diamonds", "Clubs", "Hearts", "Spades"];
@@ -33,7 +35,11 @@ class Table {
   newDeck() {
     this.cardNypes.forEach((nype) => {
       this.cardNames.forEach((card, key) => {
-        this.deckDefault.push(new Card(card, nype, key + 1));
+        if(card === "Ace"){
+          this.deckDefault.push(new Card(card, nype, 13));
+        }else{
+          this.deckDefault.push(new Card(card, nype, key));
+        }
       });
     });
   }
@@ -69,7 +75,7 @@ class Table {
       this.drawRiver(slotCount);
       this.burnCards(slotCount);
       this.setFlop();
-      this.getPlayers();
+      this.getPlayers(slotCount);
       /*       this.getHand(); */
     }
   }
@@ -86,6 +92,7 @@ class Table {
       this.deckDefault[slotCount + 2],
       this.deckDefault[slotCount + 3] || []
     );
+    
   }
 
   drawTurn(slotCount) {
@@ -109,10 +116,11 @@ class Table {
   }
 
   //create players
-  getPlayers() {
-    for (let index = 0; index < 8; index++) {
+  getPlayers(slotCount) {
+    for (let index = 0; index < slotCount; index = index + 2) {
       this.players.push(
-        new Player(index + 1, "player_" + (index + 1), [
+        new Player(index + 1, "player_" + (index + 1), 
+        [
           this.hands[index],
           this.hands[index + 1],
         ])

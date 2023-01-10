@@ -66,7 +66,7 @@ playersHands.forEach((player) => {
 
 //map through and display the deck, player cards and the flop+turn+river
 
-// console.log("Shufflued Deck:", table.deckDefault);
+console.log("Shufflued Deck:", table.deckDefault);
 // console.log("Dealing Cards!", table.dealCards());
 console.log("Hands:", table.hands);
 console.log("Flop:", table.flop);

@@ -18,18 +18,47 @@ Deck
 
 player
  hand Card[] OK
- id hash
+ id hash 
  name string OK
- getHand()
+ getHand() OK
  
 card
  key int OK
  nype string OK
  name string OK
 
-         <li class="feature card__name">
-          ${index + 1} - ${hand[0].name} of ${hand[0].nype}
-        </li>
-        <li class="feature card__name">
-          ${index + 1} - ${hand[1].name} of ${hand[1].nype}
-        </li>
+      
+-------------POKER COMBINATIONS-------------
+
+1- ROYAL FLUSH
+-> ACE, KING, QUEEN, JACK AN 10 - SAME NYPE
+
+2- STRAIGHT FLUSH
+->SEQUENCE OF FIVE CARDS - SAME NYPE
+
+3- FOUR OF KIND
+->FOUR EQUAL CARDS
+
+4- FULL HOUSE
+-> THREE OF A KIND + PAIR (Nines full of Fives)
+-> IF SET OF THREE IS EQUAL COMPARE PAIRS, IF THE PAIRS ARE EQUALS ITS A TIE
+-> HALF POT TO EACH PLAYER
+
+5- FLUSH
+-> 5 OF THE SAME NYPE
+-> VALUE DETERMINED BY THE HIGHEST CARD
+
+6- STRAIGHT
+->SEQUENCE OF 5 CARDS - ANY NYPE
+
+7- THREE OF A KIND
+-> THREE CARDS OF THE SAME VALUE
+
+8- TWO PAIR
+-> TWO DISTINCT PAIRS
+
+9- PAIR
+-> TWO CARDS OF THE SAME VALUE
+
+10- HIGH CARD
+->THE HIGHEST CARD IN THE HAND
