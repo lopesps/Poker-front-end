@@ -1,28 +1,77 @@
-import Table from "./Table.js";
-import Player from "./Player.js";
+import Table from "./components/Table.js";
+import Player from "./components/Player.js";
 
-const players = new Player(8);
-const table = new Table(8);
+/* const players = new Player(8); */
+const table = new Table();
 
-const content = `
-  <p>
-  </p>
-`;
+table.dealCards();
+
+const newDeck = table.deckDefault.map((card, index) => {
+  let tableArticle = document.createElement("article");
+  tableArticle.classList.add("card");
+  tableArticle.setAttribute("id", "deck_" + index);
+
+  tableArticle.innerHTML = `
+      <li class="feature card__name">${index + 1} - ${card.name} of ${
+    card.nype
+  }</li>
+  `;
+  return tableArticle;
+});
+
+const flop = table.flop.map((card, index) => {
+  let flopArticle = document.createElement("article");
+  flopArticle.classList.add("card");
+  flopArticle.setAttribute("id", "flop_" + index);
+
+  flopArticle.innerHTML = `
+      <li class="feature card__name">${index + 1} - ${card.name} of ${
+    card.nype
+  }</li>
+  `;
+
+  return flopArticle;
+});
+
+const playersHands = table.players.map((player, key) => {
+  let playerArticle = document.createElement("article");
+  playerArticle.classList.add("player");
+  playerArticle.setAttribute("id", "player_" + key);
+
+  playerArticle.innerHTML = `
+      <div class="playerContainer">
+        <h2>${player.name}</h2>
+        ${table.showPlayers(player)}
+      </div>
+  `;
+
+  return playerArticle;
+});
 
 const main = document.querySelector(".maincontent");
+const aside = document.querySelector(".asidecontent");
+const nav = document.querySelector(".navcontent");
 
-const newArticle = document.createElement("article");
-newArticle.classList.add("table");
-newArticle.setAttribute("id", "poker");
-newArticle.innerHTML = content;
+newDeck.forEach((card) => {
+  main.append(card);
+});
 
-main.append(newArticle);
+flop.forEach((card) => {
+  aside.append(card);
+});
 
-console.log("Shufflued Deck:", table.shuffleDeck());
-console.log("Dealing Cards!", table.dealCards());
+playersHands.forEach((player) => {
+  nav.append(player);
+});
+
+//map through and display the deck, player cards and the flop+turn+river
+
+// console.log("Shufflued Deck:", table.deckDefault);
+// console.log("Dealing Cards!", table.dealCards());
+console.log("Hands:", table.hands);
 console.log("Flop:", table.flop);
-console.log("Turn:", table.turn);
-console.log("River:", table.river);
 console.log("Burned Cards:", table.burnedCards);
-console.log("Players:", players.numPlayers);
-console.log("Final Flop:", table.setFlop());
+// console.log("Turn:", table.turn);
+// console.log("River:", table.river);
+
+console.log(table.players);
