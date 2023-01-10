@@ -14,16 +14,22 @@ Deck
  turn() OK
  river() OK
  
- getTableCard()[flop,turn,river]
+ getTableCard()[flop,turn,river] OK
 
 player
- hand Card[]
+ hand Card[] OK
  id hash
- name string
- cash float
+ name string OK
  getHand()
  
 card
- key int
- nype string
- name string
+ key int OK
+ nype string OK
+ name string OK
+
+         <li class="feature card__name">
+          ${index + 1} - ${hand[0].name} of ${hand[0].nype}
+        </li>
+        <li class="feature card__name">
+          ${index + 1} - ${hand[1].name} of ${hand[1].nype}
+        </li>
