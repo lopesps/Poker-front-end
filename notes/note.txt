@@ -1,0 +1,64 @@
+Deck
+ deckDefault OK
+
+ flop Card[] OK
+ turn Card OK
+ river Card OK
+ burnedCards Cards[] OK
+
+ players Player[] OK
+
+
+ burnsCards() OK
+ flop() OK
+ turn() OK
+ river() OK
+ 
+ getTableCard()[flop,turn,river] OK
+
+player
+ hand Card[] OK
+ id hash 
+ name string OK
+ getHand() OK
+ 
+card
+ key int OK
+ nype string OK
+ name string OK
+
+      
+-------------POKER COMBINATIONS-------------
+
+1- ROYAL FLUSH
+-> ACE, KING, QUEEN, JACK AN 10 - SAME NYPE
+
+2- STRAIGHT FLUSH
+->SEQUENCE OF FIVE CARDS - SAME NYPE
+
+3- FOUR OF KIND
+->FOUR EQUAL CARDS
+
+4- FULL HOUSE
+-> THREE OF A KIND + PAIR (Nines full of Fives)
+-> IF SET OF THREE IS EQUAL COMPARE PAIRS, IF THE PAIRS ARE EQUALS ITS A TIE
+-> HALF POT TO EACH PLAYER
+
+5- FLUSH
+-> 5 OF THE SAME NYPE
+-> VALUE DETERMINED BY THE HIGHEST CARD
+
+6- STRAIGHT
+->SEQUENCE OF 5 CARDS - ANY NYPE
+
+7- THREE OF A KIND
+-> THREE CARDS OF THE SAME VALUE
+
+8- TWO PAIR
+-> TWO DISTINCT PAIRS
+
+9- PAIR
+-> TWO CARDS OF THE SAME VALUE
+
+10- HIGH CARD
+->THE HIGHEST CARD IN THE HAND
