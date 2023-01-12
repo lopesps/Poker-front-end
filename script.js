@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import Table from "./components/Table.js";
 import Player from "./components/Player.js";
 
+=======
+import Table from "../components/Table.js";
+/* import Player from "../components/Player.js";
+ */
+>>>>>>> aa00c77 (front organizado)
 /* const players = new Player(8); */
 const table = new Table();
 
